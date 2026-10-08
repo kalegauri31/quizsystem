@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Students | TY Quiz System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body class="dashboard-page">
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a class="logo" href="admin-dashboard.html"><span class="logo-mark">Q</span><span>TY Quiz <span class="table-muted">Admin</span></span></a>
+        <nav class="main-nav" aria-label="Admin navigation">
+          <a href="admin-dashboard.html">Overview</a>
+          <a href="admin-quizzes.html">Quizzes</a>
+          <a href="admin-students.html" class="active" aria-current="page">Students</a>
+          <a href="admin-results.html">Results</a>
+          <a href="index.html" class="btn btn-ghost">Exit admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container dashboard-content admin-content">
+      <section class="dashboard-hero admin-heading">
+        <div>
+          <span class="eyebrow alt">People management</span>
+          <h1>Students</h1>
+          <p>Browse student accounts and review their quiz participation.</p>
+        </div>
+        <div class="stat-card" style="padding: 12px 18px"><span>Registered students</span><strong style="font-size: 1.4rem; margin: 4px 0 0">1,284</strong></div>
+      </section>
+
+      <section class="panel">
+        <div class="admin-toolbar">
+          <div>
+            <h3>Student directory</h3>
+            <span class="table-muted">Student records shown here are sample data.</span>
+          </div>
+          <div class="admin-toolbar-actions">
+            <input class="admin-control admin-search" type="search" placeholder="Search students..." aria-label="Search students" data-table-search />
+            <select class="admin-control" aria-label="Filter students by status" data-table-filter>
+              <option value="all">All statuses</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="admin-table" data-admin-table>
+            <thead>
+              <tr><th>Student</th><th>Joined</th><th>Quizzes taken</th><th>Average score</th><th>Last active</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr data-status="active">
+                <td><div class="table-person"><span class="avatar">AP</span><span><strong>Ava Patel</strong><small>ava.patel@example.com</small></span></div></td><td>Sep 12, 2026</td><td>24</td><td>92%</td><td>Today</td><td><span class="pill success">Active</span></td>
+              </tr>
+              <tr data-status="active">
+                <td><div class="table-person"><span class="avatar">NK</span><span><strong>Noah Kim</strong><small>noah.kim@example.com</small></span></div></td><td>Aug 28, 2026</td><td>18</td><td>84%</td><td>Today</td><td><span class="pill success">Active</span></td>
+              </tr>
+              <tr data-status="inactive">
+                <td><div class="table-person"><span class="avatar">MG</span><span><strong>Mia Garcia</strong><small>mia.garcia@example.com</small></span></div></td><td>Aug 05, 2026</td><td>11</td><td>76%</td><td>Sep 30, 2026</td><td><span class="pill neutral">Inactive</span></td>
+              </tr>
+              <tr data-status="active">
+                <td><div class="table-person"><span class="avatar">JW</span><span><strong>James Wilson</strong><small>james.wilson@example.com</small></span></div></td><td>Jul 19, 2026</td><td>32</td><td>89%</td><td>Yesterday</td><td><span class="pill success">Active</span></td>
+              </tr>
+              <tr data-status="inactive">
+                <td><div class="table-person"><span class="avatar">SL</span><span><strong>Sofia Lee</strong><small>sofia.lee@example.com</small></span></div></td><td>Jun 02, 2026</td><td>7</td><td>81%</td><td>Sep 22, 2026</td><td><span class="pill neutral">Inactive</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="admin-empty" data-empty-state>No students match your search.</p>
+        </div>
+      </section>
+    </main>
+    <script src="assets/script.js"></script>
+  </body>
+</html>

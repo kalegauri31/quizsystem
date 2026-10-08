@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz | TY Quiz System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body class="quiz-page">
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <div class="logo">
+          <span class="logo-mark">Q</span>
+          <span>TY Quiz</span>
+        </div>
+        <nav class="main-nav">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="quiz.html" class="active">Quiz</a>
+          <a href="result.html">Results</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container quiz-wrapper">
+      <section class="quiz-panel">
+        <div class="quiz-header">
+          <div>
+            <span class="eyebrow alt">JavaScript Basics</span>
+            <h1>Quiz Challenge</h1>
+          </div>
+          <div class="timer-box">
+            <span>Time Left</span>
+            <strong id="timeLeft">60s</strong>
+          </div>
+        </div>
+
+        <div id="questionContainer" class="question-block"></div>
+
+        <div class="quiz-actions">
+          <button class="btn btn-ghost" id="prevBtn" type="button">Previous</button>
+          <button class="btn btn-primary" id="nextBtn" type="button">Next</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>

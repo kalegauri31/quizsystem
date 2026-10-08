@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | TY Quiz System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body class="auth-page">
+    <div class="auth-shell">
+      <div class="auth-card">
+        <div class="auth-header">
+          <div class="logo">
+            <span class="logo-mark">Q</span>
+            <span>TY Quiz</span>
+          </div>
+          <h2>Create account</h2>
+          <p>Start taking tests and tracking your progress.</p>
+        </div>
+
+        <form class="auth-form" id="registerForm">
+          <label>
+            <span>Full Name</span>
+            <input type="text" placeholder="Your name" required />
+          </label>
+
+          <label>
+            <span>Email</span>
+            <input type="email" placeholder="name@example.com" required />
+          </label>
+
+          <label>
+            <span>Password</span>
+            <input type="password" placeholder="Create password" required />
+          </label>
+
+          <label>
+            <span>Confirm Password</span>
+            <input type="password" placeholder="Repeat password" required />
+          </label>
+
+          <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+        </form>
+
+        <p class="auth-switch">
+          Already registered?
+          <a href="login.html">Login here</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>

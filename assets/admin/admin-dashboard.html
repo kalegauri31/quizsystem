@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | TY Quiz System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body class="dashboard-page">
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a class="logo" href="admin-dashboard.html">
+          <span class="logo-mark">Q</span>
+          <span>TY Quiz <span class="table-muted">Admin</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Admin navigation">
+          <a href="admin-dashboard.html" class="active" aria-current="page">Overview</a>
+          <a href="admin-quizzes.html">Quizzes</a>
+          <a href="admin-students.html">Students</a>
+          <a href="admin-results.html">Results</a>
+          <a href="index.html" class="btn btn-ghost">Exit admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container dashboard-content admin-content">
+      <section class="dashboard-hero admin-heading">
+        <div>
+          <span class="eyebrow alt">Administration</span>
+          <h1>Dashboard overview</h1>
+          <p>Monitor quiz activity and manage your learning community.</p>
+        </div>
+        <a href="admin-quizzes.html" class="btn btn-primary">Manage quizzes</a>
+      </section>
+
+      <section class="stats-grid admin-stats" aria-label="Platform statistics">
+        <article class="stat-card">
+          <div class="admin-stat-top"><span>Total students</span><span class="admin-stat-icon">S</span></div>
+          <strong>1,284</strong>
+          <small class="admin-stat-change">+8.2% this month</small>
+        </article>
+        <article class="stat-card">
+          <div class="admin-stat-top"><span>Published quizzes</span><span class="admin-stat-icon">Q</span></div>
+          <strong>48</strong>
+          <small class="admin-stat-change">6 added this month</small>
+        </article>
+        <article class="stat-card">
+          <div class="admin-stat-top"><span>Quiz attempts</span><span class="admin-stat-icon">A</span></div>
+          <strong>3,692</strong>
+          <small class="admin-stat-change">+12.4% this month</small>
+        </article>
+        <article class="stat-card">
+          <div class="admin-stat-top"><span>Average score</span><span class="admin-stat-icon">%</span></div>
+          <strong>82%</strong>
+          <small>Across all assessments</small>
+        </article>
+      </section>
+
+      <section class="content-grid admin-grid">
+        <article class="panel">
+          <div class="panel-header">
+            <h3>Recent quiz activity</h3>
+            <a href="admin-results.html">View results</a>
+          </div>
+          <div class="table-scroll">
+            <table class="admin-table">
+              <thead>
+                <tr><th>Student</th><th>Quiz</th><th>Score</th><th>Date</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Ava Patel</strong></td><td>JavaScript Basics</td><td><strong>92%</strong></td><td>Today</td>
+                </tr>
+                <tr>
+                  <td><strong>Noah Kim</strong></td><td>HTML &amp; CSS</td><td><strong>84%</strong></td><td>Today</td>
+                </tr>
+                <tr>
+                  <td><strong>Mia Garcia</strong></td><td>Database Fundamentals</td><td><strong>76%</strong></td><td>Yesterday</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <h3>Weekly attempts</h3>
+            <span class="table-muted">Last 7 days</span>
+          </div>
+          <div class="mini-bars" role="img" aria-label="Quiz attempts increased throughout the week">
+            <div class="mini-bar-group"><span class="mini-bar" style="height: 38%"></span><small>Mon</small></div>
+            <div class="mini-bar-group"><span class="mini-bar" style="height: 54%"></span><small>Tue</small></div>
+            <div class="mini-bar-group"><span class="mini-bar" style="height: 46%"></span><small>Wed</small></div>
+            <div class="mini-bar-group"><span class="mini-bar" style="height: 72%"></span><small>Thu</small></div>
+            <div class="mini-bar-group"><span class="mini-bar" style="height: 62%"></span><small>Fri</small></div>
+            <div class="mini-bar-group"><span class="mini-bar" style="height: 88%"></span><small>Sat</small></div>
+            <div class="mini-bar-group"><span class="mini-bar" style="height: 68%"></span><small>Sun</small></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h3>Quick links</h3>
+        </div>
+        <div class="admin-toolbar-actions">
+          <a href="admin-quizzes.html" class="btn btn-secondary">Create and manage quizzes</a>
+          <a href="admin-students.html" class="btn btn-secondary">View student directory</a>
+          <a href="admin-results.html" class="btn btn-secondary">Review all results</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

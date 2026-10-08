@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Results | TY Quiz System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body class="dashboard-page">
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a class="logo" href="admin-dashboard.html"><span class="logo-mark">Q</span><span>TY Quiz <span class="table-muted">Admin</span></span></a>
+        <nav class="main-nav" aria-label="Admin navigation">
+          <a href="admin-dashboard.html">Overview</a>
+          <a href="admin-quizzes.html">Quizzes</a>
+          <a href="admin-students.html">Students</a>
+          <a href="admin-results.html" class="active" aria-current="page">Results</a>
+          <a href="index.html" class="btn btn-ghost">Exit admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container dashboard-content admin-content">
+      <section class="dashboard-hero admin-heading">
+        <div>
+          <span class="eyebrow alt">Performance</span>
+          <h1>Quiz results</h1>
+          <p>Review assessment outcomes across your student community.</p>
+        </div>
+        <a href="admin-dashboard.html" class="btn btn-secondary">Back to overview</a>
+      </section>
+
+      <section class="stats-grid admin-stats" aria-label="Result statistics">
+        <article class="stat-card"><span>Total attempts</span><strong>3,692</strong><small>All-time submissions</small></article>
+        <article class="stat-card"><span>Average score</span><strong>82%</strong><small class="admin-stat-change">+3.1% this month</small></article>
+        <article class="stat-card"><span>Pass rate</span><strong>89%</strong><small>Passing score: 60%</small></article>
+        <article class="stat-card"><span>Completed today</span><strong>126</strong><small>Across all quizzes</small></article>
+      </section>
+
+      <section class="panel">
+        <div class="admin-toolbar">
+          <div>
+            <h3>Assessment submissions</h3>
+            <span class="table-muted">Sample results for the current term.</span>
+          </div>
+          <div class="admin-toolbar-actions">
+            <input class="admin-control admin-search" type="search" placeholder="Search results..." aria-label="Search results" data-table-search />
+            <select class="admin-control" aria-label="Filter results by quiz" data-table-filter>
+              <option value="all">All quizzes</option>
+              <option value="javascript basics">JavaScript Basics</option>
+              <option value="html & css essentials">HTML &amp; CSS Essentials</option>
+              <option value="database fundamentals">Database Fundamentals</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="admin-table" data-admin-table>
+            <thead>
+              <tr><th>Student</th><th>Quiz</th><th>Score</th><th>Correct answers</th><th>Time taken</th><th>Submitted</th></tr>
+            </thead>
+            <tbody>
+              <tr data-filter="javascript basics">
+                <td><div class="table-person"><span class="avatar">AP</span><span><strong>Ava Patel</strong><small>ava.patel@example.com</small></span></div></td><td>JavaScript Basics</td><td><strong>92%</strong></td><td>23 / 25</td><td>08:15</td><td>Today, 10:42 AM</td>
+              </tr>
+              <tr data-filter="html & css essentials">
+                <td><div class="table-person"><span class="avatar">NK</span><span><strong>Noah Kim</strong><small>noah.kim@example.com</small></span></div></td><td>HTML &amp; CSS Essentials</td><td><strong>84%</strong></td><td>21 / 25</td><td>11:03</td><td>Today, 09:18 AM</td>
+              </tr>
+              <tr data-filter="database fundamentals">
+                <td><div class="table-person"><span class="avatar">MG</span><span><strong>Mia Garcia</strong><small>mia.garcia@example.com</small></span></div></td><td>Database Fundamentals</td><td><strong>76%</strong></td><td>19 / 25</td><td>14:29</td><td>Yesterday, 03:26 PM</td>
+              </tr>
+              <tr data-filter="javascript basics">
+                <td><div class="table-person"><span class="avatar">JW</span><span><strong>James Wilson</strong><small>james.wilson@example.com</small></span></div></td><td>JavaScript Basics</td><td><strong>88%</strong></td><td>22 / 25</td><td>09:47</td><td>Yesterday, 11:05 AM</td>
+              </tr>
+              <tr data-filter="html & css essentials">
+                <td><div class="table-person"><span class="avatar">SL</span><span><strong>Sofia Lee</strong><small>sofia.lee@example.com</small></span></div></td><td>HTML &amp; CSS Essentials</td><td><strong>68%</strong></td><td>17 / 25</td><td>12:11</td><td>Oct 04, 2026</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="admin-empty" data-empty-state>No results match your search.</p>
+        </div>
+      </section>
+    </main>
+    <script src="assets/script.js"></script>
+  </body>
+</html>

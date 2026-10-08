@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Quizzes | TY Quiz System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body class="dashboard-page">
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a class="logo" href="admin-dashboard.html"><span class="logo-mark">Q</span><span>TY Quiz <span class="table-muted">Admin</span></span></a>
+        <nav class="main-nav" aria-label="Admin navigation">
+          <a href="admin-dashboard.html">Overview</a>
+          <a href="admin-quizzes.html" class="active" aria-current="page">Quizzes</a>
+          <a href="admin-students.html">Students</a>
+          <a href="admin-results.html">Results</a>
+          <a href="index.html" class="btn btn-ghost">Exit admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container dashboard-content admin-content">
+      <section class="dashboard-hero admin-heading">
+        <div>
+          <span class="eyebrow alt">Content management</span>
+          <h1>Quizzes</h1>
+          <p>Create assessments and manage their publication status.</p>
+        </div>
+        <button class="btn btn-primary" id="openQuizDialog" type="button">Create quiz</button>
+      </section>
+
+      <section class="panel">
+        <div class="admin-toolbar">
+          <div>
+            <h3>All quizzes</h3>
+            <span class="table-muted">Manage the assessments available to your students.</span>
+          </div>
+          <div class="admin-toolbar-actions">
+            <input class="admin-control admin-search" type="search" placeholder="Search quizzes..." aria-label="Search quizzes" data-table-search />
+            <select class="admin-control" aria-label="Filter quizzes by status" data-table-filter>
+              <option value="all">All statuses</option>
+              <option value="published">Published</option>
+              <option value="draft">Draft</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="admin-table" data-admin-table>
+            <thead>
+              <tr><th>Quiz title</th><th>Category</th><th>Questions</th><th>Attempts</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+              <tr data-status="published">
+                <td><strong>JavaScript Basics</strong><span class="table-muted">Updated Oct 04, 2026</span></td><td>Programming</td><td>20</td><td>842</td><td><span class="pill success">Published</span></td><td><button type="button" class="text-button danger" data-delete-row>Delete</button></td>
+              </tr>
+              <tr data-status="published">
+                <td><strong>HTML &amp; CSS Essentials</strong><span class="table-muted">Updated Oct 02, 2026</span></td><td>Web development</td><td>15</td><td>604</td><td><span class="pill success">Published</span></td><td><button type="button" class="text-button danger" data-delete-row>Delete</button></td>
+              </tr>
+              <tr data-status="draft">
+                <td><strong>Database Fundamentals</strong><span class="table-muted">Updated Sep 28, 2026</span></td><td>Databases</td><td>12</td><td>0</td><td><span class="pill warning">Draft</span></td><td><button type="button" class="text-button danger" data-delete-row>Delete</button></td>
+              </tr>
+              <tr data-status="published">
+                <td><strong>Python for Beginners</strong><span class="table-muted">Updated Sep 25, 2026</span></td><td>Programming</td><td>18</td><td>391</td><td><span class="pill success">Published</span></td><td><button type="button" class="text-button danger" data-delete-row>Delete</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="admin-empty" data-empty-state>No quizzes match your search.</p>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="admin-dialog" id="quizDialog" aria-labelledby="quizDialogTitle">
+      <h2 id="quizDialogTitle">Create a quiz</h2>
+      <p>Add a quiz to the admin list. You can connect it to questions when backend support is available.</p>
+      <form class="admin-form" id="createQuizForm">
+        <label>Quiz title<input class="admin-control" name="title" type="text" placeholder="e.g. Intro to Python" required maxlength="80" /></label>
+        <label>Category<input class="admin-control" name="category" type="text" placeholder="e.g. Programming" required maxlength="50" /></label>
+        <label>Number of questions<input class="admin-control" name="questions" type="number" min="1" max="100" value="10" required /></label>
+        <label>Status<select class="admin-control" name="status"><option value="draft">Save as draft</option><option value="published">Publish</option></select></label>
+        <div class="admin-form-actions">
+          <button class="btn btn-secondary" type="button" id="closeQuizDialog">Cancel</button>
+          <button class="btn btn-primary" type="submit">Add quiz</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>

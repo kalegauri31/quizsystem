@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | TY Quiz System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body class="dashboard-page">
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <div class="logo">
+          <span class="logo-mark">Q</span>
+          <span> Quiz</span>
+        </div>
+        <nav class="main-nav">
+          <a href="dashboard.html" class="active">Dashboard</a>
+          <a href="quiz.html">Take Quiz</a>
+          <a href="result.html">Results</a>
+          <a href="index.html" class="btn btn-ghost">Logout</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container dashboard-content">
+      <section class="dashboard-hero">
+        <div>
+          <span class="eyebrow alt">Student dashboard</span>
+          <h1>Welcome back !</h1>
+        </div>
+        <a href="quiz.html" class="btn btn-primary">Start Quiz</a>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card">
+          <span>Quizzes Taken</span>
+          <strong>18</strong>
+          <small>+3 this week</small>
+        </article>
+        <article class="stat-card">
+          <span>Average Score</span>
+          <strong>86%</strong>
+          <small>High performance</small>
+        </article>
+        <article class="stat-card">
+          <span>Streak</span>
+          <strong>7 Days</strong>
+          <small>Keep it up</small>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Available Tests</h3>
+            <a href="quiz.html">View all</a>
+          </div>
+
+          <ul class="item-list">
+            <li>
+              <div>
+                <strong>JavaScript Basics</strong>
+                <small>10 Questions</small>
+              </div>
+              <span class="pill success">Ready</span>
+            </li>
+            <li>
+              <div>
+                <strong>HTML & CSS Quiz</strong>
+                <small>12 Questions</small>
+              </div>
+              <span class="pill warning">New</span>
+            </li>
+            <li>
+              <div>
+                <strong>Database Fundamentals</strong>
+                <small>8 Questions</small>
+              </div>
+              <span class="pill neutral">Pending</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Recent Results</h3>
+            <a href="result.html">See details</a>
+          </div>
+
+          <ul class="result-list">
+            <li>
+              <span>JS Basics</span>
+              <strong>92%</strong>
+            </li>
+            <li>
+              <span>CSS Design</span>
+              <strong>88%</strong>
+            </li>
+            <li>
+              <span>SQL Test</span>
+              <strong>79%</strong>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>

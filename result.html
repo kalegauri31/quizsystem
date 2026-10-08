@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results | TY Quiz System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body class="result-page">
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <div class="logo">
+          <span class="logo-mark">Q</span>
+          <span>TY Quiz</span>
+        </div>
+        <nav class="main-nav">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="quiz.html">Quiz</a>
+          <a href="result.html" class="active">Results</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container result-wrapper">
+      <section class="result-card">
+        <span class="eyebrow alt">Assessment complete</span>
+        <h1>Final Score: 92%</h1>
+        <div class="score-ring">
+          <div class="score-inner">
+            <strong>92</strong>
+            <span>/100</span>
+          </div>
+        </div>
+
+        <div class="result-details">
+          <div>
+            <span>Correct Answers</span>
+            <strong>23 / 25</strong>
+          </div>
+          <div>
+            <span>Time Used</span>
+            <strong>08:15</strong>
+          </div>
+          <div>
+            <span>Rank</span>
+            <strong>#4</strong>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <a href="dashboard.html" class="btn btn-primary">Back to Dashboard</a>
+          <a href="quiz.html" class="btn btn-secondary">Retake Quiz</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>
