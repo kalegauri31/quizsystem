@@ -26,6 +26,19 @@ const nextBtn = document.getElementById('nextBtn');
 const prevBtn = document.getElementById('prevBtn');
 const timeLeftEl = document.getElementById('timeLeft');
 
+document.querySelectorAll('[data-password-toggle]').forEach((toggle) => {
+  const passwordInput = document.getElementById(toggle.getAttribute('aria-controls'));
+  if (!passwordInput) return;
+
+  toggle.addEventListener('click', () => {
+    const isVisible = passwordInput.type === 'text';
+    passwordInput.type = isVisible ? 'password' : 'text';
+    toggle.textContent = isVisible ? 'Show' : 'Hide';
+    toggle.setAttribute('aria-label', `${isVisible ? 'Show' : 'Hide'} password`);
+    toggle.setAttribute('aria-pressed', String(!isVisible));
+  });
+});
+
 let currentQuestion = 0;
 let selectedAnswers = new Array(questions.length).fill(null);
 let timeLeft = 60;
@@ -108,19 +121,150 @@ if (timeLeftEl) {
   }, 1000);
 }
 
+const usersStorageKey = 'tyQuizUsers';
+const passwordHashIterations = 120000;
+
+function getRegisteredUsers() {
+  const storedUsers = window.localStorage.getItem(usersStorageKey);
+  if (!storedUsers) return [];
+
+  const users = JSON.parse(storedUsers);
+  if (!Array.isArray(users)) {
+    throw new Error('Saved account data is invalid. Clear the site data and register again.');
+  }
+  return users;
+}
+
+const authEntry = document.body.hasAttribute('data-auth-entry');
+if (authEntry) {
+  try {
+    const users = getRegisteredUsers();
+    window.location.replace(users.length > 0 ? 'login.html' : 'register.html');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+function showAuthMessage(form, message, isError = true) {
+  const messageElement = form.parentElement.querySelector('[data-auth-message]');
+  if (!messageElement) return;
+
+  messageElement.textContent = message;
+  messageElement.dataset.error = String(isError);
+}
+
+async function hashPassword(password, salt) {
+  if (!window.crypto || !window.crypto.subtle) {
+    throw new Error('Secure password checks are unavailable. Open this site through localhost or HTTPS.');
+  }
+
+  const keyMaterial = await window.crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(password),
+    'PBKDF2',
+    false,
+    ['deriveBits']
+  );
+  const hash = await window.crypto.subtle.deriveBits(
+    { name: 'PBKDF2', salt, iterations: passwordHashIterations, hash: 'SHA-256' },
+    keyMaterial,
+    256
+  );
+  return Array.from(new Uint8Array(hash), (byte) => byte.toString(16).padStart(2, '0')).join('');
+}
+
+function createPasswordSalt() {
+  const salt = new Uint8Array(16);
+  window.crypto.getRandomValues(salt);
+  return Array.from(salt, (byte) => byte.toString(16).padStart(2, '0')).join('');
+}
+
+function saltFromHex(salt) {
+  return new Uint8Array(salt.match(/.{2}/g).map((byte) => Number.parseInt(byte, 16)));
+}
+
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
-  loginForm.addEventListener('submit', (event) => {
+  const emailInput = loginForm.elements.namedItem('email');
+
+  if (emailInput) emailInput.addEventListener('blur', () => { emailInput.value = emailInput.value.trim(); });
+
+  const registeredEmail = new URLSearchParams(window.location.search).get('registered');
+  if (registeredEmail) {
+    emailInput.value = registeredEmail;
+    showAuthMessage(loginForm, 'Account created. Log in with your email and password.', false);
+  }
+
+  loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    window.location.href = 'dashboard.html';
+    if (!loginForm.reportValidity()) return;
+
+    const submitButton = loginForm.querySelector('[type="submit"]');
+    submitButton.disabled = true;
+    showAuthMessage(loginForm, '');
+    try {
+      const email = emailInput.value.trim().toLowerCase();
+      const password = loginForm.elements.namedItem('password').value;
+      const user = getRegisteredUsers().find((registeredUser) => registeredUser.email === email);
+
+      if (!user || (await hashPassword(password, saltFromHex(user.salt))) !== user.passwordHash) {
+        showAuthMessage(loginForm, 'Email or password is incorrect. Register first if you do not have an account.');
+        return;
+      }
+
+      window.sessionStorage.setItem('tyQuizSession', JSON.stringify({ name: user.name, email: user.email }));
+      window.location.href = 'dashboard.html';
+    } catch (error) {
+      showAuthMessage(loginForm, error instanceof Error ? error.message : 'Unable to log in. Please try again.');
+    } finally {
+      submitButton.disabled = false;
+    }
   });
 }
 
 const registerForm = document.getElementById('registerForm');
 if (registerForm) {
-  registerForm.addEventListener('submit', (event) => {
+  const nameInput = registerForm.elements.namedItem('fullName');
+  const emailInput = registerForm.elements.namedItem('email');
+  const passwordInput = registerForm.elements.namedItem('password');
+  const confirmPasswordInput = registerForm.elements.namedItem('confirmPassword');
+  const validatePasswordMatch = () => {
+    confirmPasswordInput.setCustomValidity(
+      confirmPasswordInput.value === passwordInput.value ? '' : 'Passwords do not match.'
+    );
+  };
+
+  nameInput.addEventListener('blur', () => { nameInput.value = nameInput.value.trim(); });
+  emailInput.addEventListener('blur', () => { emailInput.value = emailInput.value.trim(); });
+  passwordInput.addEventListener('input', validatePasswordMatch);
+  confirmPasswordInput.addEventListener('input', validatePasswordMatch);
+
+  registerForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    window.location.href = 'dashboard.html';
+    validatePasswordMatch();
+    if (!registerForm.reportValidity()) return;
+
+    const submitButton = registerForm.querySelector('[type="submit"]');
+    submitButton.disabled = true;
+    showAuthMessage(registerForm, '');
+    try {
+      const email = emailInput.value.trim().toLowerCase();
+      const users = getRegisteredUsers();
+      if (users.some((user) => user.email === email)) {
+        showAuthMessage(registerForm, 'An account with this email already exists. Please log in.');
+        return;
+      }
+
+      const salt = createPasswordSalt();
+      const passwordHash = await hashPassword(passwordInput.value, saltFromHex(salt));
+      users.push({ name: nameInput.value.trim(), email, salt, passwordHash });
+      window.localStorage.setItem(usersStorageKey, JSON.stringify(users));
+      window.location.href = `login.html?registered=${encodeURIComponent(email)}`;
+    } catch (error) {
+      showAuthMessage(registerForm, error instanceof Error ? error.message : 'Unable to create your account. Please try again.');
+    } finally {
+      submitButton.disabled = false;
+    }
   });
 }
 

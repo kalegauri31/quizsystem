@@ -24,12 +24,31 @@
         <form class="auth-form" id="loginForm">
           <label>
             <span>Email</span>
-            <input type="email" placeholder="name@example.com" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="name@example.com"
+              autocomplete="username"
+              maxlength="254"
+              required
+            />
           </label>
 
           <label>
             <span>Password</span>
-            <input type="password" placeholder="Enter password" required />
+            <span class="password-field">
+              <input
+                id="loginPassword"
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                autocomplete="current-password"
+                minlength="8"
+                maxlength="128"
+                required
+              />
+              <button class="password-toggle" type="button" data-password-toggle aria-controls="loginPassword" aria-label="Show password" aria-pressed="false">Show</button>
+            </span>
           </label>
 
           <div class="form-row between">
@@ -42,10 +61,16 @@
 
           <button type="submit" class="btn btn-primary btn-block">Login</button>
         </form>
+        <p class="auth-message" data-auth-message role="status" aria-live="polite"></p>
 
         <p class="auth-switch">
           Don't have an account?
           <a href="register.html">Create one</a>
+        </p>
+        <p class="auth-note">Demo login: accounts are saved in this browser only.</p>
+        <p class="auth-switch">
+          Are you an admin?
+          <a href="assets/admin/admin-login.html">Admin login</a>
         </p>
       </div>
     </div>

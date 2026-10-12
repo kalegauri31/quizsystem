@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body style="font-family: Arial; background: #f0f4f8; text-align: center; padding: 40px;">
+
+    <form action="../../adminLogin" method="post"
+          style="background: white; padding: 30px; width: 320px; margin: auto; border-radius: 10px;">
+
+        <h2 style="color: #234C6A;">Admin Login</h2>
+
+        <input type="text" name="username" placeholder="Admin Username" autocomplete="username" minlength="2" maxlength="80" required
+               style="width: 90%; padding: 10px; margin: 10px 0;">
+
+        <span class="password-field" style="width: 90%; margin: 10px auto;">
+            <input id="adminPassword" type="password" name="password" placeholder="Admin Password" autocomplete="current-password" minlength="8" maxlength="128" required
+                   style="width: 100%; padding: 10px;">
+            <button class="password-toggle" type="button" data-password-toggle aria-controls="adminPassword" aria-label="Show password" aria-pressed="false">Show</button>
+        </span>
+
+        <button type="submit"
+                style="background: #1B3C53; color: white; padding: 12px; width: 100%; border: none; border-radius: 5px;">
+            Admin Login
+        </button>
+    </form>
+    <p><a href="../../index.html">Back to home</a></p>
+
+    <script src="../script.js"></script>
+</body>
+</html>

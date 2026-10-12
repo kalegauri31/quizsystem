@@ -24,30 +24,75 @@
         <form class="auth-form" id="registerForm">
           <label>
             <span>Full Name</span>
-            <input type="text" placeholder="Your name" required />
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Your name"
+              autocomplete="name"
+              minlength="2"
+              maxlength="80"
+              required
+            />
           </label>
 
           <label>
             <span>Email</span>
-            <input type="email" placeholder="name@example.com" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="name@example.com"
+              autocomplete="email"
+              maxlength="254"
+              required
+            />
           </label>
 
           <label>
             <span>Password</span>
-            <input type="password" placeholder="Create password" required />
+            <span class="password-field">
+              <input
+                id="registerPassword"
+                type="password"
+                name="password"
+                placeholder="Create password (at least 8 characters)"
+                autocomplete="new-password"
+                minlength="8"
+                maxlength="128"
+                required
+              />
+              <button class="password-toggle" type="button" data-password-toggle aria-controls="registerPassword" aria-label="Show password" aria-pressed="false">Show</button>
+            </span>
           </label>
 
           <label>
             <span>Confirm Password</span>
-            <input type="password" placeholder="Repeat password" required />
+            <span class="password-field">
+              <input
+                id="confirmPassword"
+                type="password"
+                name="confirmPassword"
+                placeholder="Repeat password"
+                autocomplete="new-password"
+                minlength="8"
+                maxlength="128"
+                required
+              />
+              <button class="password-toggle" type="button" data-password-toggle aria-controls="confirmPassword" aria-label="Show password" aria-pressed="false">Show</button>
+            </span>
           </label>
 
           <button type="submit" class="btn btn-primary btn-block">Create Account</button>
         </form>
+        <p class="auth-message" data-auth-message role="status" aria-live="polite"></p>
 
         <p class="auth-switch">
           Already registered?
           <a href="login.html">Login here</a>
+        </p>
+        <p class="auth-note">Demo registration: accounts are saved in this browser only.</p>
+        <p class="auth-switch">
+          Are you an admin?
+          <a href="assets/admin/admin-login.html">Admin login</a>
         </p>
       </div>
     </div>

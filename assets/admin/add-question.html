@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Question | TY Quiz System</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="dashboard-page">
+    <header class="topbar">
+        <div class="container nav-wrap">
+            <a class="logo" href="admin-dashboard.html"><span class="logo-mark">Q</span><span>TY Quiz <span class="table-muted">Admin</span></span></a>
+            <nav class="main-nav" aria-label="Admin navigation">
+                <a href="admin-dashboard.html">Overview</a>
+                <a href="../admin-quizzes.html" class="active" aria-current="page">Quizzes</a>
+                <a href="../admin-students.html">Students</a>
+                <a href="admin-results.html">Results</a>
+                <a href="../../index.html" class="btn btn-ghost">Exit admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container dashboard-content admin-content">
+    <form action="../../addQuestion" method="post"
+          style="background: white; padding: 25px; max-width: 400px; margin: auto; border-radius: 10px;">
+
+        <h2 style="color: #234C6A;">Add Quiz Question</h2>
+
+        <textarea name="question" placeholder="Enter Question" required
+                  style="width: 90%; padding: 10px; margin: 8px;"></textarea><br>
+
+        <input type="text" name="optionA" placeholder="Option A" required
+               style="width: 90%; padding: 10px; margin: 8px;"><br>
+
+        <input type="text" name="optionB" placeholder="Option B" required
+               style="width: 90%; padding: 10px; margin: 8px;"><br>
+
+        <input type="text" name="optionC" placeholder="Option C" required
+               style="width: 90%; padding: 10px; margin: 8px;"><br>
+
+        <input type="text" name="optionD" placeholder="Option D" required
+               style="width: 90%; padding: 10px; margin: 8px;"><br>
+
+        <select name="correctAnswer" required
+                style="width: 95%; padding: 10px; margin: 8px;">
+            <option value="">Select Correct Answer</option>
+            <option value="A">Option A</option>
+            <option value="B">Option B</option>
+            <option value="C">Option C</option>
+            <option value="D">Option D</option>
+        </select><br><br>
+
+        <button type="submit"
+                style="background: #456882; color: white; padding: 12px 20px; border: none; border-radius: 5px;">
+            Add Question
+        </button>
+    </form>
+    </main>
+
+</body>
+</html>

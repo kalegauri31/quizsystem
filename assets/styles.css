@@ -408,6 +408,36 @@ button, input {
   box-shadow: 0 0 0 4px rgba(91, 92, 230, 0.12);
 }
 
+.password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-field input {
+  padding-right: 68px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  color: var(--primary);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.password-toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 .checkbox-inline {
   display: inline-flex !important;
   flex-direction: row !important;
@@ -432,6 +462,24 @@ button, input {
   text-align: center;
   color: var(--muted);
   margin-top: 18px;
+}
+
+.auth-message {
+  min-height: 1.5em;
+  margin: 14px 0 0;
+  color: var(--danger);
+  text-align: center;
+}
+
+.auth-message[data-error="false"] {
+  color: var(--success);
+}
+
+.auth-note {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: center;
 }
 
 .dashboard-page,
